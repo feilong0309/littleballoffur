@@ -1,6 +1,7 @@
 """Example runs with Little Ball of Fur."""
 
 import networkx as nx
+import matplotlib.pyplot as plt
 
 from littleballoffur.dataset import GraphReader
 
@@ -18,15 +19,30 @@ from littleballoffur.edge_sampling import RandomEdgeSampler, RandomNodeEdgeSampl
 reader = GraphReader("facebook")
 
 graph = reader.get_graph()
+# #画图
+# pos = nx.spring_layout(graph)
+# #nx.draw_spring(graph, node_size=15, node_color=node_lable, cmap=plt.get_cmap('hsv'), with_labels = True )
+# plt.figure(1)
+# nx.draw(graph, node_size=20, cmap=plt.get_cmap('hsv'), with_labels = True, font_size = 6, edge_color = 'red')
+# plt.savefig("ba.png")           #输出方式1: 将图像存为一个png格式的图片文件
+# plt.show()                            #输出方式2: 在窗口中显示这幅图像
 
 #-------------------
 # Snow Ball Sampler
 #-------------------
 
 sampler = SnowBallSampler()
-
+sampler.__init__(number_of_nodes=1000, k=100, seed=42)
 new_graph = sampler.sample(graph)
 
+
+#画图
+pos = nx.spring_layout(new_graph)
+#nx.draw_spring(graph, node_size=15, node_color=node_lable, cmap=plt.get_cmap('hsv'), with_labels = True )
+plt.figure(2)
+nx.draw(new_graph, node_size=20, cmap=plt.get_cmap('hsv'), with_labels = True, font_size = 6, edge_color = 'red')
+plt.savefig("ba2.png")           #输出方式1: 将图像存为一个png格式的图片文件
+plt.show()                            #输出方式2: 在窗口中显示这幅图像
 #----------------------------
 # Depth First Search Sampler
 #----------------------------
@@ -98,6 +114,8 @@ new_graph = sampler.sample(graph)
 sampler = CommunityStructureExpansionSampler()
 
 new_graph = sampler.sample(graph)
+
+
 
 #--------------------------
 # Frontier Sampler Example
