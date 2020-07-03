@@ -13,7 +13,9 @@ class GraphReader(object):
     """
     def __init__(self, dataset="wikipedia"):
         self.dataset = dataset + "_edges.csv"
-        self.base_url = "https://github.com/benedekrozemberczki/littleballoffur/raw/master/dataset/"
+        self.base_url = "file:/E:/Computer_N/SUBJECT/Clawling_analysis/RepositoryNDSC/littleballoffur/dataset/"
+
+        # self.base_url = "https://github.com/benedekrozemberczki/littleballoffur/raw/master/dataset/"
 
     def _pandas_reader(self, bytes):
         """
@@ -31,6 +33,7 @@ class GraphReader(object):
         """
         path = os.path.join(self.base_url, self.dataset)
         data = urllib.request.urlopen(path).read()
+
         data = self._pandas_reader(data)
         return data
    
