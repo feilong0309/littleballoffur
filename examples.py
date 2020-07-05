@@ -16,8 +16,8 @@ from littleballoffur.exploration_sampling import RandomWalkWithRestartSampler, R
 from littleballoffur.edge_sampling import RandomEdgeSamplerWithPartialInduction
 from littleballoffur.edge_sampling import RandomEdgeSampler, RandomNodeEdgeSampler, HybridNodeEdgeSampler, RandomEdgeSamplerWithInduction
 
-reader = GraphReader("facebook")
-
+# reader = GraphReader("facebook")
+reader = GraphReader("tinghua_se_all_partial_graph_numeric")
 graph = reader.get_graph()
 # #画图
 # pos = nx.spring_layout(graph)

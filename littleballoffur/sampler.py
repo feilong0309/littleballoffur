@@ -28,6 +28,7 @@ class Sampler(object):
         """Checking the connected nature of a single graph."""
         connected = nx.is_connected(graph)
         if not connected:
+            # print("Graph is not connected. Please see requirements.")
             raise ValueError("Graph is not connected. Please see requirements.")
 
     def _check_directedness(self, graph):

@@ -24,7 +24,8 @@ class GraphReader(object):
         tab = pd.read_csv(io.BytesIO(bytes),
                           encoding="utf8",
                           sep=",",
-                          dtype={"switch": np.int32})
+                          dtype={"switch": np.int32}
+                        )
         return tab
 
     def _dataset_reader(self):
